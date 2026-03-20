@@ -1,2 +1,4 @@
 # txtshot-roulette
-Text-based version of the game Buckshot Roulette
+
+Text-based version of the game Buckshot Roulette. Single player vs. CPU.
+
