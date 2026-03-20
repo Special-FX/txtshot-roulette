@@ -4,11 +4,10 @@ import random
 import time
 
 # change to modify speed at which lines appear
-PAUSE_TIME = 1.0
+PAUSE_TIME = 0.5
 
-def pause(multiplier=1.0):
-    multiplier = 0.5
-    time.sleep(PAUSE_TIME * multiplier)
+def pause():
+    time.sleep(PAUSE_TIME)
 
 # change to modify speed at which text appears
 SLOW_PRINT_DELAY = 0.015
@@ -61,7 +60,7 @@ class Game:
         random.shuffle(self.shells)
 
         slow_print(f"Shells loaded: {total_shells} (random order)")
-        pause(2)
+        pause()
 
         if self.round == 2:
             self.player_items = self.deal_items(2)
@@ -146,15 +145,15 @@ class Game:
             return None
 
         slow_print("\nTrigger pulled...")
-        pause(2)
+        pause()
 
         shell = self.shells.pop(0)
 
         print("*CLICK*...")
-        pause(1)
+        pause()
 
         slow_print(f"It's a {shell} shell!")
-        pause(1.5)
+        pause()
 
         damage = 2 if self.double_damage else 1
         self.double_damage = False
@@ -169,7 +168,7 @@ class Game:
         else:
             slow_print("Nothing happened.")
 
-        pause(2)
+        pause()
         return shell
 
     def player_turn(self):
@@ -215,7 +214,7 @@ class Game:
             return
 
         slow_print("\nDealer's turn...")
-        pause(2)
+        pause()
 
         # simple AI item usage
         if self.dealer_items and random.random() < 0.5:
@@ -226,7 +225,7 @@ class Game:
             return
 
         slow_print("Dealer raises the shotgun...")
-        pause(1.5)
+        pause()
         
         # simple AI target selection
         if random.random() < 0.5:
@@ -235,7 +234,7 @@ class Game:
             target = "self"
 
         slow_print(f"Dealer shoots {'YOU' if target=='player' else 'himself'}.")
-        pause(2)
+        pause()
 
         self.shoot(target)
 
@@ -270,7 +269,7 @@ def main():
                     return
 
         print("\nOut of shells. Reloading...")
-        pause(2)
+        pause()
 
 
 if __name__ == "__main__":
